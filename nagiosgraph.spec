@@ -1,5 +1,5 @@
 %define name	nagiosgraph
-%define version 1.2.0
+%define version 1.3.1
 %define release %mkrel 1
 
 Name:		%{name}
@@ -9,8 +9,8 @@ Summary:	Visualization addon for nagios
 License:	GPL
 Group:		Networking/WWW
 URL:		http://nagiosgraph.sourceforge.net
-Source:     http://downloads.sourceforge.net/nagvis/%{name}-%{version}.tar.gz
-Patch:      nagiosgraph-1.1.3-fhs.patch
+Source:     http://downloads.sourceforge.net/nagiosgraph/%{name}-%{version}.tar.gz
+Patch:      nagiosgraph-1.3.1-fhs.patch
 Requires:   nagios
 # webapp macros and scriptlets
 Requires(post):		rpm-helper >= 0.16
