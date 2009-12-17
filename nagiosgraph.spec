@@ -1,5 +1,5 @@
 %define name	nagiosgraph
-%define version 1.3.2
+%define version 1.3.3
 %define release %mkrel 1
 
 Name:		%{name}
@@ -10,7 +10,7 @@ License:	GPL
 Group:		Networking/WWW
 URL:		http://nagiosgraph.sourceforge.net
 Source:     http://downloads.sourceforge.net/nagiosgraph/%{name}-%{version}.tar.gz
-Patch:      nagiosgraph-1.3.1-fhs.patch
+Patch:      nagiosgraph-1.3.3-fhs.patch
 Requires:   nagios
 # webapp macros and scriptlets
 Requires(post):		rpm-helper >= 0.16
@@ -59,6 +59,8 @@ Alias /%{name} %{_datadir}/%{name}/www
 <Directory %{_datadir}/%{name}/www>
     DirectoryIndex show.cgi
     Options ExecCGI
+
+    Order deny,allow
     Allow from all
 </Directory>
 EOF
