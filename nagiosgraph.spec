@@ -1,5 +1,5 @@
 %define name	nagiosgraph
-%define version 1.3.3
+%define version 1.4.0
 %define release %mkrel 1
 
 Name:		%{name}
@@ -10,13 +10,8 @@ License:	GPL
 Group:		Networking/WWW
 URL:		http://nagiosgraph.sourceforge.net
 Source:     http://downloads.sourceforge.net/nagiosgraph/%{name}-%{version}.tar.gz
-Patch:      nagiosgraph-1.3.3-fhs.patch
+Patch:      nagiosgraph-1.4.0-fhs.patch
 Requires:   nagios
-# webapp macros and scriptlets
-Requires(post):		rpm-helper >= 0.16
-Requires(postun):	rpm-helper >= 0.16
-BuildRequires:	rpm-helper >= 0.16
-BuildRequires:	rpm-mandriva-setup >= 1.23
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -60,7 +55,7 @@ Alias /%{name} %{_datadir}/%{name}/www
     DirectoryIndex show.cgi
     Options ExecCGI
 
-    Order deny,allow
+    Order allow,deny
     Allow from all
 </Directory>
 EOF
@@ -78,11 +73,15 @@ EOF
 rm -rf %{buildroot}
 
 %post
+%if %mdkversion < 201010
 %_post_webapp
+%endif
 %create_ghostfile /var/log/nagiosgraph.log nagios apache 664
 
 %postun
+%if %mdkversion < 201010
 %_postun_webapp
+%endif
 
 %files
 %defattr(-,root,root)
