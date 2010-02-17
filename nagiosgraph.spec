@@ -1,6 +1,6 @@
 %define name	nagiosgraph
 %define version 1.4.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -12,6 +12,10 @@ URL:		http://nagiosgraph.sourceforge.net
 Source:     http://downloads.sourceforge.net/nagiosgraph/%{name}-%{version}.tar.gz
 Patch:      nagiosgraph-1.4.0-fhs.patch
 Requires:   nagios
+Requires(post):   rpm-helper
+%if %mdkversion < 201010
+Requires(postun):   rpm-helper
+%endif
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -90,4 +94,3 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/nagiosgraph
 %{_datadir}/%{name}
 %attr(-,nagios,nagios) %{_var}/lib/%{name}
-
