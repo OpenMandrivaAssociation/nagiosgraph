@@ -1,6 +1,6 @@
 %define name	nagiosgraph
-%define version 1.4.0
-%define release %mkrel 2
+%define version 1.4.1
+%define release %mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -10,7 +10,7 @@ License:	GPL
 Group:		Networking/WWW
 URL:		http://nagiosgraph.sourceforge.net
 Source:     http://downloads.sourceforge.net/nagiosgraph/%{name}-%{version}.tar.gz
-Patch:      nagiosgraph-1.4.0-fhs.patch
+Patch:      nagiosgraph-1.4.1-fhs.patch
 Requires:   nagios
 Requires(post):   rpm-helper
 %if %mdkversion < 201010
