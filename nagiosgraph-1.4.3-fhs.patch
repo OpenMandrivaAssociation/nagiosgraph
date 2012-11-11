@@ -1,0 +1,105 @@
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/cgi/show.cgi nagiosgraph-1.4.3-fhs//cgi/show.cgi
+--- nagiosgraph-1.4.3/cgi/show.cgi	2010-03-15 14:58:58.000000000 +0100
++++ nagiosgraph-1.4.3-fhs//cgi/show.cgi	2010-07-17 10:05:56.000000000 +0200
+@@ -8,7 +8,7 @@
+ # Author:  (c) 2010 Matthew Wall
+ 
+ # The configuration file and ngshared.pm must be in this directory:
+-use lib '/opt/nagiosgraph/etc';
++use lib '/usr/share/nagiosgraph/lib';
+ 
+ use ngshared qw(:SHOW);
+ use English qw(-no_match_vars);
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/cgi/showgraph.cgi nagiosgraph-1.4.3-fhs//cgi/showgraph.cgi
+--- nagiosgraph-1.4.3/cgi/showgraph.cgi	2010-03-15 20:58:10.000000000 +0100
++++ nagiosgraph-1.4.3-fhs//cgi/showgraph.cgi	2010-07-17 10:05:56.000000000 +0200
+@@ -8,7 +8,7 @@
+ # Author:  (c) 2010 Matthew Wall
+ 
+ # The configuration file and ngshared.pm must be in this directory:
+-use lib '/opt/nagiosgraph/etc';
++use lib '/usr/share/nagiosgraph/lib';
+ 
+ use ngshared qw(:SHOWGRAPH);
+ use RRDs;
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/cgi/showhost.cgi nagiosgraph-1.4.3-fhs//cgi/showhost.cgi
+--- nagiosgraph-1.4.3/cgi/showhost.cgi	2010-03-15 14:58:58.000000000 +0100
++++ nagiosgraph-1.4.3-fhs//cgi/showhost.cgi	2010-07-17 10:05:56.000000000 +0200
+@@ -9,7 +9,7 @@
+ # Author:  (c) 2010 Matthew Wall
+ 
+ # The configuration file and ngshared.pm must be in this directory:
+-use lib '/opt/nagiosgraph/etc';
++use lib '/usr/share/nagiosgraph/lib';
+ 
+ use ngshared qw(:SHOWHOST);
+ use English qw(-no_match_vars);
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/cgi/showservice.cgi nagiosgraph-1.4.3-fhs//cgi/showservice.cgi
+--- nagiosgraph-1.4.3/cgi/showservice.cgi	2010-03-15 14:58:58.000000000 +0100
++++ nagiosgraph-1.4.3-fhs//cgi/showservice.cgi	2010-07-17 10:05:56.000000000 +0200
+@@ -9,7 +9,7 @@
+ # Author:  (c) 2010 Matthew Wall
+ 
+ # The configuration file and ngshared.pm must be in this directory:
+-use lib '/opt/nagiosgraph/etc';
++use lib '/usr/share/nagiosgraph/lib';
+ 
+ use ngshared qw(:SHOWSERVICE);
+ use English qw(-no_match_vars);
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/cgi/testcolor.cgi nagiosgraph-1.4.3-fhs//cgi/testcolor.cgi
+--- nagiosgraph-1.4.3/cgi/testcolor.cgi	2010-03-15 14:58:58.000000000 +0100
++++ nagiosgraph-1.4.3-fhs//cgi/testcolor.cgi	2010-07-17 10:05:56.000000000 +0200
+@@ -10,7 +10,7 @@
+ ## no critic (ProhibitConstantPragma)
+ 
+ # The configuration file and ngshared.pm must be in this directory:
+-use lib '/opt/nagiosgraph/etc';
++use lib '/usr/share/nagiosgraph/lib';
+ 
+ use ngshared;
+ use English qw(-no_match_vars);
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/etc/nagiosgraph.conf nagiosgraph-1.4.3-fhs//etc/nagiosgraph.conf
+--- nagiosgraph-1.4.3/etc/nagiosgraph.conf	2010-06-07 18:30:21.000000000 +0200
++++ nagiosgraph-1.4.3-fhs//etc/nagiosgraph.conf	2010-07-17 10:05:56.000000000 +0200
+@@ -17,7 +17,7 @@
+ perflog = /var/nagios/perfdata.log
+ 
+ # Directory to store rrd database files
+-rrddir = /var/nagiosgraph/rrd
++rrddir = /var/lib/nagiosgraph
+ 
+ # File containing regular expressions to identify service and perf data
+ mapfile = /etc/nagiosgraph/map
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/etc/ngshared.pm nagiosgraph-1.4.3-fhs//etc/ngshared.pm
+--- nagiosgraph-1.4.3/etc/ngshared.pm	2010-06-07 18:30:21.000000000 +0200
++++ nagiosgraph-1.4.3-fhs//etc/ngshared.pm	2010-07-17 10:05:56.000000000 +0200
+@@ -736,7 +736,7 @@
+     if (! $logid) { $logid = 'logfile'; }
+ 
+     my $debug = 0; # set this higher to debug config file parsing
+-    my $errstr = readfile($INC[0] . q(/) . $CFGNAME, \%Config, $debug);
++    my $errstr = readfile("/etc/$CFGNAME", \%Config, $debug);
+     if ($errstr ne q()) { return $errstr; }
+ 
+     initlog($app, $Config{$logid});
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/lib/insert.pl nagiosgraph-1.4.3-fhs//lib/insert.pl
+--- nagiosgraph-1.4.3/lib/insert.pl	2010-06-07 18:31:18.000000000 +0200
++++ nagiosgraph-1.4.3-fhs//lib/insert.pl	2010-07-17 10:05:56.000000000 +0200
+@@ -30,7 +30,7 @@
+ 
+ 
+ # The configuration file and ngshared.pm must be in this directory:
+-use lib '/opt/nagiosgraph/etc';
++use lib '/usr/share/nagiosgraph/lib';
+ 
+ use ngshared;
+ use strict;
+diff -Naur -x '*~' -x '*.orig' nagiosgraph-1.4.3/lib/insert.sh nagiosgraph-1.4.3-fhs//lib/insert.sh
+--- nagiosgraph-1.4.3/lib/insert.sh	2009-11-16 22:00:12.000000000 +0100
++++ nagiosgraph-1.4.3-fhs//lib/insert.sh	2010-07-17 10:05:56.000000000 +0200
+@@ -11,4 +11,4 @@
+ #    command_line    /usr/local/lib/nagios/insert.sh "$LASTSERVICECHECK$||$HOSTNAME$||$SERVICEDESC$||$SERVICEOUTPUT$||$SERVICEPERFDATA$"
+ #}
+ 
+-/usr/bin/perl /usr/local/lib/nagios/insert.pl "$*"
++/usr/bin/perl /usr/share/nagiosgraph/bin/insert.pl "$*"
