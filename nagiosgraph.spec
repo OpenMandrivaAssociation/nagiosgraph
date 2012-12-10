@@ -94,3 +94,52 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/nagiosgraph
 %{_datadir}/%{name}
 %attr(-,nagios,nagios) %{_var}/lib/%{name}
+
+
+%changelog
+* Sat Jul 17 2010 Guillaume Rousse <guillomovitch@mandriva.org> 1.4.3-1mdv2011.0
++ Revision: 554504
+- new version
+
+* Thu Mar 18 2010 Guillaume Rousse <guillomovitch@mandriva.org> 1.4.2-1mdv2010.1
++ Revision: 525138
+- new version
+- rediff fhs patch
+
+* Fri Feb 19 2010 Guillaume Rousse <guillomovitch@mandriva.org> 1.4.1-1mdv2010.1
++ Revision: 508002
+- new version
+
+* Wed Feb 17 2010 Guillaume Rousse <guillomovitch@mandriva.org> 1.4.0-2mdv2010.1
++ Revision: 507288
+- fix dependencies
+
+* Thu Jan 21 2010 Guillaume Rousse <guillomovitch@mandriva.org> 1.4.0-1mdv2010.1
++ Revision: 494750
+- new version
+- rely on filetrigger for reloading apache configuration begining with 2010.1,
+  rpm-helper macros otherwise
+
+* Thu Dec 17 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.3.3-1mdv2010.1
++ Revision: 479723
+- new version
+
+* Sun Nov 22 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.3.2-1mdv2010.1
++ Revision: 468634
+- update to new version 1.3.2
+
+* Sat Jul 18 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.3.1-1mdv2010.0
++ Revision: 397014
+- new version
+
+* Fri Jan 30 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.2.0-1mdv2009.1
++ Revision: 335581
+- new version
+
+* Sun Dec 28 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.1.3-1mdv2009.1
++ Revision: 320705
+- import nagiosgraph
+
+
+* Sun Dec 28 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.1.3-1mdv2009.1
+- first mdv release 
