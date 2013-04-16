@@ -1,6 +1,6 @@
 %define name	nagiosgraph
 %define version 1.4.3
-%define release: 2
+%define release: 3
 
 Name:		%{name}
 Version:	%{version}
