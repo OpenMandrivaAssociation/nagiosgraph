@@ -1,10 +1,6 @@
-%define name	nagiosgraph
-%define version 1.4.3
-%define release: 3
-
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		nagiosgraph
+Version:	1.4.3
+Release:	3
 Summary:	Visualization addon for nagios
 License:	GPL
 Group:		Networking/WWW
@@ -12,12 +8,7 @@ URL:		http://nagiosgraph.sourceforge.net
 Source:     http://downloads.sourceforge.net/nagiosgraph/%{name}-%{version}.tar.gz
 Patch:      nagiosgraph-1.4.3-fhs.patch
 Requires:   nagios
-Requires(post):   rpm-helper
-%if %mdkversion < 201010
-Requires(postun):   rpm-helper
-%endif
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Nagiosgraph is an add-on of Nagios. It collects service performance data into
