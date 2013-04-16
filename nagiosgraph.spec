@@ -1,6 +1,6 @@
 %define name	nagiosgraph
 %define version 1.4.3
-%define release %mkrel 1
+%define release: 2
 
 Name:		%{name}
 Version:	%{version}
@@ -82,10 +82,6 @@ rm -rf %{buildroot}
 %endif
 %create_ghostfile /var/log/nagiosgraph.log nagios apache 664
 
-%postun
-%if %mdkversion < 201010
-%_postun_webapp
-%endif
 
 %files
 %defattr(-,root,root)
