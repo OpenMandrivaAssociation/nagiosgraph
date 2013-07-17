@@ -1,6 +1,6 @@
 Name:		nagiosgraph
 Version:	1.4.3
-Release:	3
+Release:	4
 Summary:	Visualization addon for nagios
 License:	GPL
 Group:		Networking/WWW
@@ -50,8 +50,7 @@ Alias /%{name} %{_datadir}/%{name}/www
     DirectoryIndex show.cgi
     Options ExecCGI
 
-    Order allow,deny
-    Allow from all
+    Require all granted
 </Directory>
 EOF
 
