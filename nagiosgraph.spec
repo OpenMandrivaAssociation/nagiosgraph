@@ -1,6 +1,6 @@
 Name:		nagiosgraph
 Version:	1.4.3
-Release:	4
+Release:	5
 Summary:	Visualization addon for nagios
 License:	GPL
 Group:		Networking/WWW
