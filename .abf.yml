@@ -1,2 +1,4 @@
+removed_sources:
+  nagiosgraph-1.4.3.tar.gz: 116d4732edb9dbf4032e3b6d037c140a2a23612c
 sources:
-  "nagiosgraph-1.4.3.tar.gz": 116d4732edb9dbf4032e3b6d037c140a2a23612c
+  nagiosgraph-1.4.4.tar.gz: 12b94b170a97470b071414aae4af1f9a447ec79a
